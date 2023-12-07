@@ -22,14 +22,10 @@ public static class Day2Solution
 
             // Get the actual game data from the second part of the string and split into rounds
             string actualGame = game.Split(": ")[1];
-            List<string> rounds = [.. actualGame.Split("; ")];
-
-            foreach (string round in rounds)
+            foreach (string round in (List<string>)([.. actualGame.Split("; ")]))
             {
                 // Get each result from a game round
-                List<string> results = [.. round.Split(", ")];
-
-                foreach (string result in results)
+                foreach (string result in (List<string>)([.. round.Split(", ")]))
                 {
                     // Check if a red result, if so convert to int and add to red results list
                     if (result.EndsWith("red"))
@@ -82,14 +78,10 @@ public static class Day2Solution
 
             // Get the actual game data from the second part of the string and split into rounds
             string actualGame = game.Split(": ")[1];
-            List<string> rounds = [.. actualGame.Split("; ")];
-
-            foreach (string round in rounds)
+            foreach (string round in (List<string>)([.. actualGame.Split("; ")]))
             {
                 // Get each result from a game round
-                List<string> results = [.. round.Split(", ")];
-
-                foreach (string result in results)
+                foreach (string result in (List<string>)([.. round.Split(", ")]))
                 {
                     // Check if a red result, if so convert to int and add to red results list
                     if (result.EndsWith("red"))
