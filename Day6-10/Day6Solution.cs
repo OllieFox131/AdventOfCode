@@ -1,13 +1,34 @@
-﻿namespace ConsoleApp;
+﻿using System.Text.RegularExpressions;
 
-public static class Day6Solution
+namespace ConsoleApp;
+
+public static partial class Day6Solution
 {
     public static void PartOne()
     {
-        List<int> times = [44, 89, 96, 91];
-        List<int> records = [277, 1136, 1890, 1768];
-        //List<int> times = [7, 15, 30];
-        //List<int> records = [9, 40, 200];
+        List<string> data = File.ReadLines("C:\\Users\\AT319375\\source\\repos\\ConsoleApp\\Day6-10\\TextFiles\\Day6Task.txt").ToList();
+        //List<string> data = File.ReadLines("C:\\Users\\AT319375\\source\\repos\\ConsoleApp\\Day6-10\\TextFiles\\Day6Demo.txt").ToList();
+
+        Regex regex = MyRegex();
+
+        List<int> times = [];
+        List<int> records = [];
+
+        foreach (Match match in regex.Matches(data[0]).Cast<Match>())
+        {
+            if (int.TryParse(match.Value, out int number))
+            {
+                times.Add(number);
+            }
+        }
+
+        foreach (Match match in regex.Matches(data[1]).Cast<Match>())
+        {
+            if (int.TryParse(match.Value, out int number))
+            {
+                records.Add(number);
+            }
+        }
 
         Dictionary<int, Dictionary<int, int>> results = [];
         List<int> timesRecordBeaten = [];
@@ -56,15 +77,19 @@ public static class Day6Solution
             finalScore *= timesRecordBeat;
         }
 
-        Console.WriteLine($"Final answer is: {finalScore}");
+        Console.WriteLine($"Day 6 Part 1 answer is: {finalScore}");
     }
 
     public static void PartTwo()
     {
-        List<long> times = [44899691];
-        List<long> records = [277113618901768];
-        //List<long> times = [71530];
-        //List<long> records = [940200];
+        List<string> data = File.ReadLines("C:\\Users\\AT319375\\source\\repos\\ConsoleApp\\Day6-10\\TextFiles\\Day6Task.txt").ToList();
+        //List<string> data = File.ReadLines("C:\\Users\\AT319375\\source\\repos\\ConsoleApp\\Day6-10\\TextFiles\\Day6Demo.txt").ToList();
+
+        List<long> times = [];
+        List<long> records = [];
+
+        times.Add(long.Parse(string.Concat(data[0].ToCharArray().Where(char.IsDigit))));
+        records.Add(long.Parse(string.Concat(data[1].ToCharArray().Where(char.IsDigit))));
 
         Dictionary<int, Dictionary<int, long>> results = [];
         List<long> timesRecordBeaten = [];
@@ -113,6 +138,9 @@ public static class Day6Solution
             finalScore *= timeRecordBeat;
         }
 
-        Console.WriteLine($"Final answer is: {finalScore}");
+        Console.WriteLine($"Day 6 Part 2 answer is: {finalScore}");
     }
+
+    [GeneratedRegex(@"\b\d+\b")]
+    private static partial Regex MyRegex();
 }
