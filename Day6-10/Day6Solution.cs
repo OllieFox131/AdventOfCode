@@ -9,7 +9,7 @@ public static partial class Day6Solution
         List<string> data = File.ReadLines("C:\\Users\\AT319375\\source\\repos\\ConsoleApp\\Day6-10\\TextFiles\\Day6Task.txt").ToList();
         //List<string> data = File.ReadLines("C:\\Users\\AT319375\\source\\repos\\ConsoleApp\\Day6-10\\TextFiles\\Day6Demo.txt").ToList();
 
-        Regex regex = MyRegex();
+        Regex regex = Digits();
 
         List<int> times = [];
         List<int> records = [];
@@ -142,5 +142,5 @@ public static partial class Day6Solution
     }
 
     [GeneratedRegex(@"\b\d+\b")]
-    private static partial Regex MyRegex();
+    private static partial Regex Digits();
 }

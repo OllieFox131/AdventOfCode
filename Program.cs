@@ -15,3 +15,5 @@ Day6Solution.PartOne();
 Day6Solution.PartTwo();
 Day7Solution.PartOne();
 Day7Solution.PartTwo();
+Day8Solution.PartOne();
+Day8Solution.PartTwo();

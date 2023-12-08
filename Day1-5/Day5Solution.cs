@@ -9,25 +9,25 @@ public static class Day5Solution
 
         List<string> seeds = [.. data[0].Split(": ")[1].Split(" ")];
 
-        List<string> seedSoils = data.GetRange(data.IndexOf("seed-to-soil map:") + 1, 
+        List<string> seedSoils = data.GetRange(data.IndexOf("seed-to-soil map:") + 1,
             data.IndexOf("soil-to-fertilizer map:") - data.IndexOf("seed-to-soil map:") - 2);
 
-        List<string> soilFerts = data.GetRange(data.IndexOf("soil-to-fertilizer map:") + 1, 
+        List<string> soilFerts = data.GetRange(data.IndexOf("soil-to-fertilizer map:") + 1,
             data.IndexOf("fertilizer-to-water map:") - data.IndexOf("soil-to-fertilizer map:") - 2);
 
-        List<string> fertWatrs = data.GetRange(data.IndexOf("fertilizer-to-water map:") + 1, 
+        List<string> fertWatrs = data.GetRange(data.IndexOf("fertilizer-to-water map:") + 1,
             data.IndexOf("water-to-light map:") - data.IndexOf("fertilizer-to-water map:") - 2);
 
-        List<string> watrLghts = data.GetRange(data.IndexOf("water-to-light map:") + 1, 
+        List<string> watrLghts = data.GetRange(data.IndexOf("water-to-light map:") + 1,
             data.IndexOf("light-to-temperature map:") - data.IndexOf("water-to-light map:") - 2);
 
-        List<string> lghtTemps = data.GetRange(data.IndexOf("light-to-temperature map:") + 1, 
+        List<string> lghtTemps = data.GetRange(data.IndexOf("light-to-temperature map:") + 1,
             data.IndexOf("temperature-to-humidity map:") - data.IndexOf("light-to-temperature map:") - 2);
 
-        List<string> tempHumds = data.GetRange(data.IndexOf("temperature-to-humidity map:") + 1, 
+        List<string> tempHumds = data.GetRange(data.IndexOf("temperature-to-humidity map:") + 1,
             data.IndexOf("humidity-to-location map:") - data.IndexOf("temperature-to-humidity map:") - 2);
 
-        List<string> humdLocts = data.GetRange(data.IndexOf("humidity-to-location map:") + 1, 
+        List<string> humdLocts = data.GetRange(data.IndexOf("humidity-to-location map:") + 1,
             data.Count - data.IndexOf("humidity-to-location map:") - 1);
 
         List<long> finalLocts = [];
