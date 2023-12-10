@@ -3,6 +3,9 @@
 ##
 ## Get latest from https://github.com/github/gitignore/blob/master/VisualStudio.gitignore
 
+#Remove inputs from git
+*.txt
+
 # User-specific files
 *.rsuser
 *.suo
@@ -361,3 +364,25 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+/Day6-10/TextFiles/Day6Demo.txt
+/Day6-10/TextFiles/Day6Demo.txt
+/Day6-10/TextFiles/Day6Task.txt
+/Day6-10/TextFiles/Day7Demo.txt
+/Day6-10/TextFiles/Day7Task.txt
+/Day6-10/TextFiles/Day8Demo.txt
+/Day6-10/TextFiles/Day8Demo2.txt
+/Day6-10/TextFiles/Day8Demo3.txt
+/Day6-10/TextFiles/Day8Task.txt
+/Day6-10/TextFiles/Day9Demo.txt
+/Day6-10/TextFiles/Day9Task.txt
+/Day1-5/TextFiles/Day1Demo.txt
+/Day1-5/TextFiles/Day1Demo2.txt
+/Day1-5/TextFiles/Day1Task.txt
+/Day1-5/TextFiles/Day2Demo.txt
+/Day1-5/TextFiles/Day2Task.txt
+/Day1-5/TextFiles/Day3Demo.txt
+/Day1-5/TextFiles/Day3Task.txt
+/Day1-5/TextFiles/Day4Demo.txt
+/Day1-5/TextFiles/Day4Task.txt
+/Day1-5/TextFiles/Day5Demo.txt
+/Day1-5/TextFiles/Day5Task.txt
