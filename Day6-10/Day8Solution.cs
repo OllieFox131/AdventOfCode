@@ -15,6 +15,7 @@ public static partial class Day8Solution
 
         Dictionary<string, string> deconstructedNodes = [];
 
+        // Create a dictionary which gives the left and right instruction for each node
         foreach (string node in nodes)
         {
             MatchCollection matches = ThreeAlpha().Matches(node);
@@ -29,13 +30,16 @@ public static partial class Day8Solution
 
         while (!finished)
         {
+            // If we have finished the instructions reset to start
             if (count == instructions.Count)
             {
                 count = 0;
             }
 
+            // Get new location
             location = deconstructedNodes[$"{location}{instructions[count]}"];
 
+            // If at end location, finished
             if (location == "ZZZ")
             {
                 finished = true;
@@ -59,12 +63,14 @@ public static partial class Day8Solution
         Dictionary<string, string> deconstructedNodes = [];
         List<string> locations = [];
 
+        // Create a dictionary that contains the left and right instruction for each node
         foreach (string node in nodes)
         {
             MatchCollection matches = ThreeAlphaNumeric().Matches(node);
             deconstructedNodes.Add($"{matches[0].Value}L", matches[1].Value);
             deconstructedNodes.Add($"{matches[0].Value}R", matches[2].Value);
 
+            // Collect start points
             if (matches[0].Value.EndsWith('A'))
             {
                 locations.Add(matches[0].Value);
@@ -82,13 +88,16 @@ public static partial class Day8Solution
 
             while (!finished)
             {
+                // If we have finished instuction reset to start
                 if (count == instructions.Count)
                 {
                     count = 0;
                 }
 
+                // Get new location
                 calculatedLocation = deconstructedNodes[$"{calculatedLocation}{instructions[count]}"];
 
+                // Have we reached the end
                 if (calculatedLocation.EndsWith('Z'))
                 {
                     finished = true;
@@ -98,9 +107,11 @@ public static partial class Day8Solution
                 stepsTaken++;
             }
 
+            // Add each start location min steps to array
             minSteps.Add(stepsTaken);
         }
 
+        // Get LCM of all steps
         Console.WriteLine($"Day 8 Part 2 answer is: {Day8SolutionHelpers.FindLCMOfArray([.. minSteps])}");
     }
 

@@ -2,6 +2,7 @@
 
 internal static class Day8SolutionHelpers
 {
+    // Get greatest common demoninator
     public static long FindGCD(long a, long b)
     {
         while (b != 0)
@@ -13,6 +14,7 @@ internal static class Day8SolutionHelpers
         return Math.Abs(a);
     }
 
+    // Get lowest common multiple
     public static long FindLCMOfArray(int[] numbers)
     {
         long lcm = numbers[0];

@@ -4,24 +4,25 @@ internal static class Day10SolutionHelpers
 {
     public static (char pipeType, int i, int j) NextPipeToStart(char[,] charArray, int i, int j)
     {
-        // If its not a letter, digit or . then its a symbol return true
+        // If you can check above and it is |, 7 or F
         if (i - 1 >= 0 && (charArray[i - 1, j] == '|' || charArray[i - 1, j] == '7' || charArray[i - 1, j] == 'F'))
         {
             return (charArray[i - 1, j], i - 1, j);
         }
 
-        // If you can check below
+        // If you can check below and it is |, L or J
         if (i + 1 <= charArray.GetLength(0) - 1 && (charArray[i - 1, j] == '|' || charArray[i - 1, j] == 'L' || charArray[i - 1, j] == 'J'))
         {
             return (charArray[i + 1, j], i + 1, j);
         }
 
-        // If you can check to left and its not a letter, digit or . then its a symbol return true
+        // If you can check right and it is -, F or L
         if (j - 1 >= 0 && (charArray[i - 1, j] == '-' || charArray[i - 1, j] == 'F' || charArray[i - 1, j] == 'L'))
         {
             return (charArray[i, j - 1], i, j - 1);
         }
 
+        // Else must be the char on the left
         return (charArray[i, j + 1], i, j + 1);
     }
 
@@ -29,6 +30,7 @@ internal static class Day10SolutionHelpers
     {
         if (pipe.pipeType == '|')
         {
+            // If last pipe was above
             if (lastPipe.i == pipe.i - 1)
             {
                 return (charArray[pipe.i + 1, pipe.j], pipe.i + 1, pipe.j);
@@ -41,6 +43,7 @@ internal static class Day10SolutionHelpers
 
         if (pipe.pipeType == '-')
         {
+            // If last pipe was right
             if (lastPipe.j == pipe.j - 1)
             {
                 return (charArray[pipe.i, pipe.j + 1], pipe.i, pipe.j + 1);
@@ -53,6 +56,7 @@ internal static class Day10SolutionHelpers
 
         if (pipe.pipeType == 'L')
         {
+            // If last pipe was above
             if (lastPipe.i == pipe.i - 1)
             {
                 return (charArray[pipe.i, pipe.j + 1], pipe.i, pipe.j + 1);
@@ -65,6 +69,7 @@ internal static class Day10SolutionHelpers
 
         if (pipe.pipeType == 'J')
         {
+            // If last pipe was above
             if (lastPipe.i == pipe.i - 1)
             {
                 return (charArray[pipe.i, pipe.j - 1], pipe.i, pipe.j - 1);
@@ -77,6 +82,7 @@ internal static class Day10SolutionHelpers
 
         if (pipe.pipeType == 'F')
         {
+            // If last pipe was right
             if (lastPipe.i == pipe.i + 1)
             {
                 return (charArray[pipe.i, pipe.j + 1], pipe.i, pipe.j + 1);
@@ -89,6 +95,7 @@ internal static class Day10SolutionHelpers
 
         if (pipe.pipeType == '7')
         {
+            // If last pipe was right
             if (lastPipe.i == pipe.i + 1)
             {
                 return (charArray[pipe.i, pipe.j - 1], pipe.i, pipe.j - 1);
@@ -99,6 +106,7 @@ internal static class Day10SolutionHelpers
             }
         }
 
+        // Else return giberish
         return ('?', 1, 1);
     }
 }

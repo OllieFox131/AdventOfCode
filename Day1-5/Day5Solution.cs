@@ -201,160 +201,157 @@ public static class Day5Solution
         List<string> humdLocts = data.GetRange(data.IndexOf("humidity-to-location map:") + 1,
             data.Count - data.IndexOf("humidity-to-location map:") - 1);
 
-        List<long> finalLocts = [];
+        long loct = 0;
+        long destinationRange = 0;
+        long sourceRange = 0;
+        long rangeLength = 0;
+        bool finished = false;
 
-        List<long> actualSeeds = [];
-
-        // Calculate the actual seeds
-        for (int i = 0; i < seeds.Count; i += 2)
+        while (!finished)
         {
-            // Get the seed id and the seed range
-            long seedId = long.Parse(seeds[i]);
-            long seedRange = long.Parse(seeds[i + 1]);
+            // Set the humd to be the loct value
+            long humd = loct;
 
-            // Actual seeds are every id from the seed id to the seed range max
-            for (long j = seedId; j < seedId + seedRange; j++)
-            {
-                actualSeeds.Add(j);
-            }
-        }
-
-        foreach (long seed in actualSeeds)
-        {
-            long destinationRange = 0;
-            long sourceRange = 0;
-            long rangeLength = 0;
-
-            // Set the soil to be the seed value
-            long soil = seed;
-
-            // Check the seed doesn't pass through any of the maps
-            // If does calculate, and set the value of the soil, and break out of the loop, we have found the map!
-            foreach (string seedSoil in seedSoils)
-            {
-                destinationRange = long.Parse(seedSoil.Split(" ")[0]);
-                sourceRange = long.Parse(seedSoil.Split(" ")[1]);
-                rangeLength = long.Parse(seedSoil.Split(" ")[2]);
-
-                if (seed >= sourceRange && seed <= sourceRange + rangeLength)
-                {
-                    soil = seed - sourceRange + destinationRange;
-                    break;
-                }
-            }
-
-            // Set the fert to be the soil value
-            long fert = soil;
-
-            // Check the soil doesn't pass through any of the maps
-            // If does calculate, and set the value of the fert, and break out of the loop, we have found the map!
-            foreach (string soilFert in soilFerts)
-            {
-                destinationRange = long.Parse(soilFert.Split(" ")[0]);
-                sourceRange = long.Parse(soilFert.Split(" ")[1]);
-                rangeLength = long.Parse(soilFert.Split(" ")[2]);
-
-                if (soil >= sourceRange && soil <= sourceRange + rangeLength)
-                {
-                    fert = soil - sourceRange + destinationRange;
-                    break;
-                }
-            }
-
-            // Set the watr to be the fert value
-            long watr = fert;
-
-            // Check the fert doesn't pass through any of the maps
-            // If does calculate, and set the value of the watr, and break out of the loop, we have found the map!
-            foreach (string fertWatr in fertWatrs)
-            {
-                destinationRange = long.Parse(fertWatr.Split(" ")[0]);
-                sourceRange = long.Parse(fertWatr.Split(" ")[1]);
-                rangeLength = long.Parse(fertWatr.Split(" ")[2]);
-
-                if (fert >= sourceRange && fert <= sourceRange + rangeLength)
-                {
-                    watr = fert - sourceRange + destinationRange;
-                    break;
-                }
-            }
-
-            // Set the lght to be the watr value
-            long lght = watr;
-
-            // Check the watr doesn't pass through any of the maps
-            // If does calculate, and set the value of the lght, and break out of the loop, we have found the map!
-            foreach (string watrLght in watrLghts)
-            {
-                destinationRange = long.Parse(watrLght.Split(" ")[0]);
-                sourceRange = long.Parse(watrLght.Split(" ")[1]);
-                rangeLength = long.Parse(watrLght.Split(" ")[2]);
-
-                if (watr >= sourceRange && watr <= sourceRange + rangeLength)
-                {
-                    lght = watr - sourceRange + destinationRange;
-                    break;
-                }
-            }
-
-            // Set the temp to be the lght value
-            long temp = lght;
-
-            // Check the lght doesn't pass through any of the maps
-            // If does calculate, and set the value of the temp, and break out of the loop, we have found the map!
-            foreach (string lghtTemp in lghtTemps)
-            {
-                destinationRange = long.Parse(lghtTemp.Split(" ")[0]);
-                sourceRange = long.Parse(lghtTemp.Split(" ")[1]);
-                rangeLength = long.Parse(lghtTemp.Split(" ")[2]);
-
-                if (lght >= sourceRange && lght <= sourceRange + rangeLength)
-                {
-                    temp = lght - sourceRange + destinationRange;
-                    break;
-                }
-            }
-
-            // Set the humd to be the temp value
-            long humd = temp;
-
-            // Check the temp doesn't pass through any of the maps
+            // Check the loct doesn't pass through any of the maps
             // If does calculate, and set the value of the humd, and break out of the loop, we have found the map!
-            foreach (string tempHumd in tempHumds)
-            {
-                destinationRange = long.Parse(tempHumd.Split(" ")[0]);
-                sourceRange = long.Parse(tempHumd.Split(" ")[1]);
-                rangeLength = long.Parse(tempHumd.Split(" ")[2]);
-
-                if (temp >= sourceRange && temp <= sourceRange + rangeLength)
-                {
-                    humd = temp - sourceRange + destinationRange;
-                    break;
-                }
-            }
-
-            // Set the loct to be the humd value
-            long loct = humd;
-
-            // Check the humd doesn't pass through any of the maps
-            // If does calculate, and set the value of the loct, and break out of the loop, we have found the map!
             foreach (string humdLoct in humdLocts)
             {
                 destinationRange = long.Parse(humdLoct.Split(" ")[0]);
                 sourceRange = long.Parse(humdLoct.Split(" ")[1]);
                 rangeLength = long.Parse(humdLoct.Split(" ")[2]);
 
-                if (humd >= sourceRange && humd <= sourceRange + rangeLength)
+                if (loct >= destinationRange && loct <= destinationRange + rangeLength - 1)
                 {
-                    loct = humd - sourceRange + destinationRange;
+                    humd = loct - (destinationRange - sourceRange);
                     break;
                 }
             }
 
-            // Add the loct to the final loct list
-            finalLocts.Add(loct);
+            // Set the temp to be the humd value
+            long temp = humd;
+
+            // Check the humd doesn't pass through any of the maps
+            // If does calculate, and set the value of the temp, and break out of the loop, we have found the map!
+            foreach (string tempHumd in tempHumds)
+            {
+                destinationRange = long.Parse(tempHumd.Split(" ")[0]);
+                sourceRange = long.Parse(tempHumd.Split(" ")[1]);
+                rangeLength = long.Parse(tempHumd.Split(" ")[2]);
+
+                if (humd >= destinationRange && humd <= destinationRange + rangeLength - 1)
+                {
+                    temp = humd - (destinationRange - sourceRange);
+                    break;
+                }
+            }
+
+            // Set the lght to be the temp value
+            long lght = temp;
+
+            // Check the temp doesn't pass through any of the maps
+            // If does calculate, and set the value of the lght, and break out of the loop, we have found the map!
+            foreach (string lghtTemp in lghtTemps)
+            {
+                destinationRange = long.Parse(lghtTemp.Split(" ")[0]);
+                sourceRange = long.Parse(lghtTemp.Split(" ")[1]);
+                rangeLength = long.Parse(lghtTemp.Split(" ")[2]);
+
+                if (temp >= destinationRange && temp <= destinationRange + rangeLength - 1)
+                {
+                    lght = temp - (destinationRange - sourceRange);
+                    break;
+                }
+            }
+
+            // Set the watr to be the lght value
+            long watr = lght;
+
+            // Check the lght doesn't pass through any of the maps
+            // If does calculate, and set the value of the watr, and break out of the loop, we have found the map!
+            foreach (string watrLght in watrLghts)
+            {
+                destinationRange = long.Parse(watrLght.Split(" ")[0]);
+                sourceRange = long.Parse(watrLght.Split(" ")[1]);
+                rangeLength = long.Parse(watrLght.Split(" ")[2]);
+
+                if (lght >= destinationRange && lght <= destinationRange + rangeLength - 1)
+                {
+                    watr = lght - (destinationRange - sourceRange);
+                    break;
+                }
+            }
+
+            // Set the fert to be the watr value
+            long fert = watr;
+
+            // Check the watr doesn't pass through any of the maps
+            // If does calculate, and set the value of the fert, and break out of the loop, we have found the map!
+            foreach (string fertWatr in fertWatrs)
+            {
+                destinationRange = long.Parse(fertWatr.Split(" ")[0]);
+                sourceRange = long.Parse(fertWatr.Split(" ")[1]);
+                rangeLength = long.Parse(fertWatr.Split(" ")[2]);
+
+                if (watr >= destinationRange && watr <= destinationRange + rangeLength - 1)
+                {
+                    fert = watr - (destinationRange - sourceRange);
+                    break;
+                }
+            }
+
+            // Set the soil to be the fert value
+            long soil = fert;
+
+            // Check the fert doesn't pass through any of the maps
+            // If does calculate, and set the value of the soil, and break out of the loop, we have found the map!
+            foreach (string soilFert in soilFerts)
+            {
+                destinationRange = long.Parse(soilFert.Split(" ")[0]);
+                sourceRange = long.Parse(soilFert.Split(" ")[1]);
+                rangeLength = long.Parse(soilFert.Split(" ")[2]);
+
+                if (fert >= destinationRange && fert <= destinationRange + rangeLength - 1)
+                {
+                    soil = fert - (destinationRange - sourceRange);
+                    break;
+                }
+            }
+
+            // Set the seed to be the soil value
+            long seed = soil;
+
+            // Check the soil doesn't pass through any of the maps
+            // If does calculate, and set the value of the seed, and break out of the loop, we have found the map!
+            foreach (string seedSoil in seedSoils)
+            {
+                destinationRange = long.Parse(seedSoil.Split(" ")[0]);
+                sourceRange = long.Parse(seedSoil.Split(" ")[1]);
+                rangeLength = long.Parse(seedSoil.Split(" ")[2]);
+
+                if (soil >= destinationRange && soil <= destinationRange + rangeLength - 1)
+                {
+                    seed = soil - (destinationRange - sourceRange);
+                    break;
+                }
+            }
+
+            // For each seed range
+            for (int i = 0; i < seeds.Count; i += 2)
+            {
+                // If seed is in seed range, we have found the smallest seed!
+                if (seed >= long.Parse(seeds[i]) && seed <= long.Parse(seeds[i]) + long.Parse(seeds[i + 1]))
+                {
+                    finished = true;
+                }
+            }
+
+            // If we arent finished, check next location
+            if (!finished)
+            {
+                loct++;
+            }
         }
 
-        Console.WriteLine($"Day 5 Part 2 answer is: {finalLocts.Min()}");
+        Console.WriteLine($"Day 5 Part 2 answer is: {loct}");
     }
 }

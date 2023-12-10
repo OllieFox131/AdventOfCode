@@ -9,7 +9,6 @@ Day3Solution.PartTwo();
 Day4Solution.PartOne();
 Day4Solution.PartTwo();
 Day5Solution.PartOne();
-// Day 5 part 2 has only been completed with dummy data
 Day5Solution.PartTwo();
 Day6Solution.PartOne();
 Day6Solution.PartTwo();

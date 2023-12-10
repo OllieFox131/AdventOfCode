@@ -4,47 +4,57 @@ internal static class Day3SolutionHelpers
 {
     public static string AsteriskAroundDigit(char[,] charArray, int i, int j)
     {
+        // If you can check above
         if (i - 1 >= 0)
         {
+            // If you can check to left and is a * return true
             if (j - 1 >= 0 && charArray[i - 1, j - 1] == '*')
             {
                 return $"({i - 1}, {j - 1})";
             }
 
+            // If is a * return true
             if (charArray[i - 1, j] == '*')
             {
                 return $"({i - 1}, {j})";
             }
 
+            // If you can check to right and is a * return true
             if (j + 1 <= charArray.GetLength(1) - 1 && charArray[i - 1, j + 1] == '*')
             {
                 return $"({i - 1}, {j + 1})";
             }
         }
 
+        // If you can check below
         if (i + 1 <= charArray.GetLength(0) - 1)
         {
+            // If you can check to left and is a * return true
             if (j - 1 >= 0 && charArray[i + 1, j - 1] == '*')
             {
                 return $"({i + 1}, {j - 1})";
             }
 
+            // If is a * return true
             if (charArray[i + 1, j] == '*')
             {
                 return $"({i + 1}, {j})";
             }
 
+            // If you can check to right and is a * return true
             if (j + 1 <= charArray.GetLength(1) - 1 && charArray[i + 1, j + 1] == '*')
             {
                 return $"({i + 1}, {j + 1})";
             }
         }
 
+        // If you can check to left and is a * return true
         if (j - 1 >= 0 && charArray[i, j - 1] == '*')
         {
             return $"({i}, {j - 1})";
         }
 
+        // If you can check to right and is a * return true
         if (j + 1 <= charArray.GetLength(1) - 1 && charArray[i, j + 1] == '*')
         {
             return $"({i}, {j + 1})";
