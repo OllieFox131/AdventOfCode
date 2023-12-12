@@ -1,6 +1,4 @@
-﻿using System.Linq;
-
-namespace ConsoleApp;
+﻿namespace ConsoleApp;
 
 public static class Day4Solution
 {

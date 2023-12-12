@@ -31,79 +31,49 @@ internal static class Day10SolutionHelpers
         if (pipe.pipeType == '|')
         {
             // If last pipe was above
-            if (lastPipe.i == pipe.i - 1)
-            {
-                return (charArray[pipe.i + 1, pipe.j], pipe.i + 1, pipe.j);
-            }
-            else
-            {
-                return (charArray[pipe.i - 1, pipe.j], pipe.i - 1, pipe.j);
-            }
+            return lastPipe.i == pipe.i - 1
+                ? ((char pipeType, int i, int j))(charArray[pipe.i + 1, pipe.j], pipe.i + 1, pipe.j)
+                : ((char pipeType, int i, int j))(charArray[pipe.i - 1, pipe.j], pipe.i - 1, pipe.j);
         }
 
         if (pipe.pipeType == '-')
         {
             // If last pipe was right
-            if (lastPipe.j == pipe.j - 1)
-            {
-                return (charArray[pipe.i, pipe.j + 1], pipe.i, pipe.j + 1);
-            }
-            else
-            {
-                return (charArray[pipe.i, pipe.j - 1], pipe.i, pipe.j - 1);
-            }
+            return lastPipe.j == pipe.j - 1
+                ? ((char pipeType, int i, int j))(charArray[pipe.i, pipe.j + 1], pipe.i, pipe.j + 1)
+                : ((char pipeType, int i, int j))(charArray[pipe.i, pipe.j - 1], pipe.i, pipe.j - 1);
         }
 
         if (pipe.pipeType == 'L')
         {
             // If last pipe was above
-            if (lastPipe.i == pipe.i - 1)
-            {
-                return (charArray[pipe.i, pipe.j + 1], pipe.i, pipe.j + 1);
-            }
-            else
-            {
-                return (charArray[pipe.i - 1, pipe.j], pipe.i - 1, pipe.j);
-            }
+            return lastPipe.i == pipe.i - 1
+                ? ((char pipeType, int i, int j))(charArray[pipe.i, pipe.j + 1], pipe.i, pipe.j + 1)
+                : ((char pipeType, int i, int j))(charArray[pipe.i - 1, pipe.j], pipe.i - 1, pipe.j);
         }
 
         if (pipe.pipeType == 'J')
         {
             // If last pipe was above
-            if (lastPipe.i == pipe.i - 1)
-            {
-                return (charArray[pipe.i, pipe.j - 1], pipe.i, pipe.j - 1);
-            }
-            else
-            {
-                return (charArray[pipe.i - 1, pipe.j], pipe.i - 1, pipe.j);
-            }
+            return lastPipe.i == pipe.i - 1
+                ? ((char pipeType, int i, int j))(charArray[pipe.i, pipe.j - 1], pipe.i, pipe.j - 1)
+                : ((char pipeType, int i, int j))(charArray[pipe.i - 1, pipe.j], pipe.i - 1, pipe.j);
         }
 
         if (pipe.pipeType == 'F')
         {
             // If last pipe was right
-            if (lastPipe.i == pipe.i + 1)
-            {
-                return (charArray[pipe.i, pipe.j + 1], pipe.i, pipe.j + 1);
-            }
-            else
-            {
-                return (charArray[pipe.i + 1, pipe.j], pipe.i + 1, pipe.j);
-            }
+            return lastPipe.i == pipe.i + 1
+                ? ((char pipeType, int i, int j))(charArray[pipe.i, pipe.j + 1], pipe.i, pipe.j + 1)
+                : ((char pipeType, int i, int j))(charArray[pipe.i + 1, pipe.j], pipe.i + 1, pipe.j);
         }
 
         if (pipe.pipeType == '7')
         {
             // If last pipe was right
-            if (lastPipe.i == pipe.i + 1)
-            {
-                return (charArray[pipe.i, pipe.j - 1], pipe.i, pipe.j - 1);
-            }
-            else
-            {
-                return (charArray[pipe.i + 1, pipe.j], pipe.i + 1, pipe.j);
-            }
+            return lastPipe.i == pipe.i + 1
+                ? ((char pipeType, int i, int j))(charArray[pipe.i, pipe.j - 1], pipe.i, pipe.j - 1)
+                : ((char pipeType, int i, int j))(charArray[pipe.i + 1, pipe.j], pipe.i + 1, pipe.j);
         }
 
         // Else return giberish

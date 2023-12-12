@@ -55,12 +55,7 @@ internal static class Day3SolutionHelpers
         }
 
         // If you can check to right and is a * return true
-        if (j + 1 <= charArray.GetLength(1) - 1 && charArray[i, j + 1] == '*')
-        {
-            return $"({i}, {j + 1})";
-        }
-
-        return "(0, 0)";
+        return j + 1 <= charArray.GetLength(1) - 1 && charArray[i, j + 1] == '*' ? $"({i}, {j + 1})" : "(0, 0)";
     }
 
     public static bool SymbolAroundDigit(char[,] charArray, int i, int j)
@@ -116,11 +111,6 @@ internal static class Day3SolutionHelpers
         }
 
         // If you can check to right and its not a letter, digit or . then its a symbol return true
-        if (j + 1 <= charArray.GetLength(1) - 1 && !char.IsLetterOrDigit(charArray[i, j + 1]) && charArray[i, j + 1] != '.')
-        {
-            return true;
-        }
-
-        return false;
+        return j + 1 <= charArray.GetLength(1) - 1 && !char.IsLetterOrDigit(charArray[i, j + 1]) && charArray[i, j + 1] != '.';
     }
 }

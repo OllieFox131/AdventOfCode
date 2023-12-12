@@ -111,9 +111,9 @@ public static class Day7Solution
         int winnings = 0;
 
         // Multiply the hand rank by the hand points
-        foreach(KeyValuePair<string, int> hand in finalHandsAndRanks)
+        foreach (KeyValuePair<string, int> hand in finalHandsAndRanks)
         {
-            winnings += (hand.Value * customHandsAndPoints[hand.Key]);
+            winnings += hand.Value * customHandsAndPoints[hand.Key];
         }
 
         Console.WriteLine($"Day 7 Part 1 answer is: {winnings}");
@@ -272,7 +272,7 @@ public static class Day7Solution
         // Multiply the hand rank by the hand points
         foreach (KeyValuePair<string, int> hand in finalHandsAndRanks)
         {
-            winnings += (hand.Value * customHandsAndPoints[hand.Key]);
+            winnings += hand.Value * customHandsAndPoints[hand.Key];
         }
 
         Console.WriteLine($"Day 7 Part 2 answer is: {winnings}");

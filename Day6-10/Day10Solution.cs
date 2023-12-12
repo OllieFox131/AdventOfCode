@@ -42,7 +42,7 @@ public static class Day10Solution
         while (!finished)
         {
             // store next pipe
-            var oldNextPipe = nextPipe;
+            (char pipeType, int i, int j) oldNextPipe = nextPipe;
 
             // Find new next pipe
             nextPipe = Day10SolutionHelpers.NextPipe(charArray, nextPipe, lastPipe);
@@ -104,7 +104,7 @@ public static class Day10Solution
         while (!finished)
         {
             // store next pipe
-            var oldNextPipe = nextPipe;
+            (char pipeType, int i, int j) oldNextPipe = nextPipe;
 
             // Find new next pipe
             nextPipe = Day10SolutionHelpers.NextPipe(charArray, nextPipe, lastPipe);
@@ -122,15 +122,14 @@ public static class Day10Solution
             }
         }
 
-
         // Trick answer, all trapped squares are in a central quarter square of original grid
-        int count = 0; 
+        int count = 0;
         // Look through central square
         for (int i = data.Length / 4; i < 3 * data.Length / 4; i++)
         {
             for (int j = data[i].Length / 4; j < 3 * data[i].Length / 4; j++)
             {
-                var coord = $"({i},{j})";
+                string coord = $"({i},{j})";
 
                 // If not a pipe, add to count
                 if (!pipes.Keys.Contains(coord))

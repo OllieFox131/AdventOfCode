@@ -63,7 +63,7 @@ public static class Day11Solution
 
         double distancesTotal = 0;
 
-        foreach (var galaxy1 in galaxies)
+        foreach (KeyValuePair<int, (int x, int y)> galaxy1 in galaxies)
         {
             double distancesForGalaxies = 0;
             foreach ((int x, int y) in galaxies.Where(g => g.Key > galaxy1.Key).Select(galaxy2 => galaxy2.Value))
@@ -175,7 +175,7 @@ public static class Day11Solution
 
         double distancesTotal = 0;
 
-        foreach (var galaxy1 in galaxies)
+        foreach (KeyValuePair<int, (int x, int y)> galaxy1 in galaxies)
         {
             double distancesForGalaxies = 0;
             foreach ((int x, int y) in galaxies.Where(g => g.Key > galaxy1.Key).Select(galaxy2 => galaxy2.Value))

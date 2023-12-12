@@ -11,6 +11,7 @@ internal static class Day8SolutionHelpers
             b = a % b;
             a = temp;
         }
+
         return Math.Abs(a);
     }
 
@@ -21,7 +22,7 @@ internal static class Day8SolutionHelpers
 
         for (int i = 1; i < numbers.Length; i++)
         {
-            lcm = (Math.Abs(lcm) / Day8SolutionHelpers.FindGCD(lcm, numbers[i])) * Math.Abs(numbers[i]);
+            lcm = Math.Abs(lcm) / Day8SolutionHelpers.FindGCD(lcm, numbers[i]) * Math.Abs(numbers[i]);
         }
 
         return lcm;
