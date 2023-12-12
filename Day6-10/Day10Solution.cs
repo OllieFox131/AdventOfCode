@@ -139,6 +139,6 @@ public static class Day10Solution
             }
         }
 
-        Console.WriteLine($"Day 10 Part 1 answer is: {count}");
+        Console.WriteLine($"Day 10 Part 2 answer is: {count}");
     }
 }

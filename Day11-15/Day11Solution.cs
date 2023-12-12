@@ -111,7 +111,7 @@ public static class Day11Solution
         }
 
         // Furtherst distance is half the number of pipes
-        Console.WriteLine($"Day 10 Part 1 answer is: {distancesTotal}");
+        Console.WriteLine($"Day 11 Part 1 answer is: {distancesTotal}");
     }
 
     public static void PartTwo()
@@ -223,6 +223,6 @@ public static class Day11Solution
         }
 
         // Furtherst distance is half the number of pipes
-        Console.WriteLine($"Day 10 Part 1 answer is: {distancesTotal}");
+        Console.WriteLine($"Day 11 Part 2 answer is: {distancesTotal}");
     }
 }
